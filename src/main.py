@@ -1,14 +1,8 @@
-from fastapi import FastAPI
+import uvicorn
+from src.factory_app import create_app
 
-from src.user.controller import USER_SERVICE
-
-app = FastAPI(title="Example FastAPI App")
-
-app.include_router(USER_SERVICE, prefix="/api/users")
- 
+app = create_app()
 
 
 if __name__ == "__main__":
-    import uvicorn
-
     uvicorn.run("src.main:app", host="127.0.0.1", port=8000, reload=True)
